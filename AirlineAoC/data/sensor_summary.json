@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-04-24T00:00:00Z",
+  "sensor_snapshots": {
+    "AC001": {
+      "status": "OPERATIONAL", "flight_phase": "GROUND_APU",
+      "subsystems": {
+        "APU":          {"health": 62, "trend": "DOWN", "risk": "HIGH",     "primary_sensor": "apu_egt_c",     "value": 598.4, "unit": "°C",  "label": "EGT"},
+        "ENGINE":       {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 741.2, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 91, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3008.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 95, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.4,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 89, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 42.1,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [562,564,563,568,571,575,578,581,584,587,591,594,595,596,597,598,598,599,598,599,598,598,599,598],
+      "vib_trend_24h": [0.38,0.39,0.38,0.40,0.41,0.43,0.44,0.44,0.45,0.46,0.47,0.48,0.48,0.49,0.49,0.50,0.50,0.51,0.50,0.51,0.51,0.52,0.51,0.52]
+    },
+    "AC002": {
+      "status": "OPERATIONAL", "flight_phase": "CRUISE",
+      "subsystems": {
+        "APU":          {"health": 94, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "ENGINE":       {"health": 85, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 748.3, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 90, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3015.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 92, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.6,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 72, "trend": "DOWN",  "risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 40.8,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [745,746,744,747,748,748,749,748,749,748,748,749,748,749,748,748,749,748,748,748,748,749,748,748],
+      "vib_trend_24h": [0.32,0.33,0.32,0.33,0.33,0.34,0.33,0.34,0.34,0.33,0.34,0.34,0.33,0.34,0.33,0.34,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.34]
+    },
+    "AC003": {
+      "status": "AOG", "flight_phase": "POST_FLIGHT",
+      "subsystems": {
+        "APU":          {"health": 80, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": 561.0, "unit": "°C",  "label": "EGT"},
+        "ENGINE":       {"health": 82, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "LANDING_GEAR": {"health": 12, "trend": "DOWN",  "risk": "CRITICAL","primary_sensor": "hyd_sys_psi",   "value": 2481.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.3,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 85, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": null,  "unit": "psi", "label": "Bleed (off)"}
+      },
+      "egt_trend_24h": [558,559,560,561,560,561,560,561,561,560,561,560,561,560,561,560,561,561,560,561,560,561,560,561],
+      "vib_trend_24h": [0.41,0.42,0.41,0.42,0.43,0.42,0.43,0.44,0.43,0.44,0.43,0.44,0.44,0.44,0.45,0.44,0.45,0.44,0.45,0.44,0.45,0.45,0.44,0.45]
+    },
+    "AC004": {
+      "status": "OPERATIONAL", "flight_phase": "CLIMB",
+      "subsystems": {
+        "APU":          {"health": 90, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "ENGINE":       {"health": 87, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 802.1, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3022.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 68, "trend": "DOWN",  "risk": "MODERATE","primary_sensor": "arinc_errors",  "value": 3.2,   "unit": "err/s","label": "ARINC Errors"},
+        "BLEED":        {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 43.5,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [740,742,741,743,744,744,745,745,746,746,747,747,748,748,749,749,750,750,800,801,802,802,802,802],
+      "vib_trend_24h": [0.35,0.35,0.36,0.35,0.36,0.36,0.35,0.36,0.36,0.35,0.36,0.36,0.36,0.35,0.36,0.36,0.35,0.36,0.36,0.35,0.36,0.36,0.35,0.36]
+    },
+    "AC005": {
+      "status": "MAINTENANCE", "flight_phase": "POST_FLIGHT",
+      "subsystems": {
+        "APU":          {"health": 70, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": 572.0, "unit": "°C",  "label": "EGT"},
+        "ENGINE":       {"health": 18, "trend": "DOWN",  "risk": "CRITICAL","primary_sensor": "eng1_vib_n1",   "value": 2.81,  "unit": "IPS", "label": "N1 Vibration"},
+        "LANDING_GEAR": {"health": 62, "trend": "DOWN",  "risk": "HIGH",    "primary_sensor": "hyd_sys_psi",   "value": 2820.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 85, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.1,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 80, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": null,  "unit": "psi", "label": "Bleed (off)"}
+      },
+      "egt_trend_24h": [750,755,758,762,765,770,775,780,785,790,798,805,812,818,825,832,840,848,855,860,868,875,882,890],
+      "vib_trend_24h": [0.80,0.88,0.95,1.05,1.14,1.25,1.35,1.48,1.58,1.70,1.82,1.94,2.05,2.16,2.28,2.40,2.51,2.61,2.68,2.72,2.75,2.78,2.80,2.81]
+    },
+    "AC006": {
+      "status": "OPERATIONAL", "flight_phase": "CRUISE",
+      "subsystems": {
+        "APU":          {"health": 97, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "ENGINE":       {"health": 96, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 738.4, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 97, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3031.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 98, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.7,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 95, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 43.8,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [736,737,737,738,738,738,738,739,738,738,739,738,738,739,738,738,738,739,738,739,738,738,739,738],
+      "vib_trend_24h": [0.28,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28,0.29,0.28]
+    },
+    "AC007": {
+      "status": "OPERATIONAL", "flight_phase": "GROUND_APU",
+      "subsystems": {
+        "APU":          {"health": 58, "trend": "DOWN",  "risk": "MODERATE","primary_sensor": "apu_vibration_g","value": 1.24, "unit": "g",   "label": "Vibration"},
+        "ENGINE":       {"health": 84, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "LANDING_GEAR": {"health": 86, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 2998.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 91, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.5,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": null,  "unit": "psi", "label": "Bleed (off)"}
+      },
+      "egt_trend_24h": [558,560,561,562,563,563,564,563,564,563,564,563,564,563,564,563,564,563,564,563,564,563,564,563],
+      "vib_trend_24h": [0.62,0.65,0.68,0.72,0.76,0.80,0.84,0.88,0.92,0.96,1.00,1.04,1.07,1.10,1.13,1.15,1.17,1.19,1.21,1.22,1.23,1.24,1.24,1.24]
+    },
+    "AC008": {
+      "status": "OPERATIONAL", "flight_phase": "DESCENT",
+      "subsystems": {
+        "APU":          {"health": 92, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "ENGINE":       {"health": 90, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 695.2, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3019.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 94, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.5,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 55, "trend": "DOWN",  "risk": "HIGH",    "primary_sensor": "precooler_dp",  "value": 4.82,  "unit": "psi", "label": "Precooler ΔP"}
+      },
+      "egt_trend_24h": [738,739,739,740,740,741,740,741,740,741,740,741,740,741,740,741,740,741,740,741,740,695,695,695],
+      "vib_trend_24h": [0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34,0.33,0.34]
+    },
+    "AC009": {
+      "status": "OPERATIONAL", "flight_phase": "TAXI_OUT",
+      "subsystems": {
+        "APU":          {"health": 75, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": 569.0, "unit": "°C",  "label": "EGT"},
+        "ENGINE":       {"health": 45, "trend": "DOWN",  "risk": "HIGH",    "primary_sensor": "eng1_egt_margin","value": 78.0, "unit": "°C",  "label": "EGT Margin"},
+        "LANDING_GEAR": {"health": 80, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 2995.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 88, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.2,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 84, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 41.9,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [820,818,815,812,810,808,805,802,800,796,792,788,784,780,776,770,765,760,754,748,742,738,734,730],
+      "vib_trend_24h": [0.42,0.44,0.46,0.48,0.51,0.54,0.57,0.60,0.64,0.67,0.71,0.74,0.78,0.82,0.85,0.88,0.92,0.96,1.00,1.04,1.08,1.12,1.14,1.16]
+    },
+    "AC010": {
+      "status": "OPERATIONAL", "flight_phase": "CRUISE",
+      "subsystems": {
+        "APU":          {"health": 99, "trend": "STABLE","risk": "LOW",     "primary_sensor": "apu_egt_c",     "value": null,  "unit": "°C",  "label": "EGT (off)"},
+        "ENGINE":       {"health": 98, "trend": "STABLE","risk": "LOW",     "primary_sensor": "eng1_egt_c",    "value": 736.1, "unit": "°C",  "label": "EGT"},
+        "LANDING_GEAR": {"health": 99, "trend": "STABLE","risk": "LOW",     "primary_sensor": "hyd_sys_psi",   "value": 3028.0,"unit": "psi", "label": "HYD Pressure"},
+        "AVIONICS":     {"health": 99, "trend": "STABLE","risk": "LOW",     "primary_sensor": "dc_bus_28v",    "value": 28.8,  "unit": "V",   "label": "DC Bus"},
+        "BLEED":        {"health": 98, "trend": "STABLE","risk": "LOW",     "primary_sensor": "bleed_duct_psi","value": 44.1,  "unit": "psi", "label": "Bleed Pressure"}
+      },
+      "egt_trend_24h": [735,736,736,736,736,736,737,736,736,736,737,736,736,736,737,736,736,736,737,736,736,736,737,736],
+      "vib_trend_24h": [0.25,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25,0.26,0.25]
+    }
+  }
+}

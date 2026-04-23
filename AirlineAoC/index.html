@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroSentinel — AOG Predictive Maintenance</title>
+  <meta name="description" content="AI-powered AOG predictive maintenance dashboard. Monitor fleet health, sensor telemetry, and failure predictions in real time." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Sidebar ─────────────────────────────────────────────────────────── -->
+<nav id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <span class="logo-text">AeroSentinel</span>
+    </div>
+    <div class="logo-sub">AOG Predictive Maintenance</div>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Operations</div>
+    <a class="nav-item active" data-page="fleet">
+      <span class="nav-icon">🛩</span> Fleet Overview
+    </a>
+    <a class="nav-item" data-page="aircraft">
+      <span class="nav-icon">📊</span> Aircraft Detail
+    </a>
+    <a class="nav-item" data-page="predictions">
+      <span class="nav-icon">🤖</span> Prediction Engine
+      <span class="nav-badge" id="nav-alert-count">3</span>
+    </a>
+    <a class="nav-item" data-page="maintenance">
+      <span class="nav-icon">🔧</span> Maintenance Planner
+    </a>
+    <div class="nav-section-label" style="margin-top:12px">Documentation</div>
+    <a class="nav-item" data-page="data">
+      <span class="nav-icon">🗄</span> Data Explorer
+    </a>
+    <a class="nav-item" data-page="report">
+      <span class="nav-icon">📋</span> Domain Report
+    </a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="system-status">
+      <div class="status-dot"></div>
+      <span>System Operational · v1.0.0</span>
+    </div>
+    <div style="font-size:10px;color:var(--text-muted);margin-top:4px">SkyBridge Airlines · 10-aircraft fleet</div>
+  </div>
+</nav>
+
+<!-- ── Main ────────────────────────────────────────────────────────────── -->
+<div id="main">
+  <!-- Topbar -->
+  <header id="topbar">
+    <div>
+      <div id="topbar-title" style="font-size:17px;font-weight:600">Fleet Overview</div>
+      <div class="topbar-meta">SkyBridge Airlines · Fleet-wide predictive analytics</div>
+    </div>
+    <div class="ml-auto flex items-center gap-12">
+      <div class="topbar-time" id="topbar-time">00:00:00 UTC</div>
+      <button class="btn btn-primary" onclick="APP.navigate('predictions')">⚠ 3 Active Alerts</button>
+    </div>
+  </header>
+
+  <!-- Alert Ticker -->
+  <div id="ticker">
+    <span class="ticker-label">LIVE</span>
+    <div class="ticker-scroll">
+      <span class="ticker-text">Loading alerts…</span>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div id="content">
+
+    <!-- ── PAGE: Fleet Overview ─────────────────────────────────────── -->
+    <div id="page-fleet" class="page active">
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">AOG Reduction</div>
+          <div><span class="kpi-value" id="kpi-aog-reduction">—</span><span class="kpi-unit">%</span></div>
+          <div class="kpi-progress"><div class="kpi-progress-bar" id="aog-bar" style="width:0%"></div></div>
+          <div class="kpi-footer">
+            <span class="kpi-trend up">↑ On Track</span>
+            <span class="kpi-target" id="kpi-aog-target"></span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Unscheduled MX Reduction</div>
+          <div><span class="kpi-value" id="kpi-mx-reduction">—</span><span class="kpi-unit">%</span></div>
+          <div class="kpi-progress"><div class="kpi-progress-bar" id="mx-bar" style="width:0%"></div></div>
+          <div class="kpi-footer">
+            <span class="kpi-trend up">↑ On Track</span>
+            <span class="kpi-target" id="kpi-mx-target"></span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Downtime Reduction</div>
+          <div><span class="kpi-value" id="kpi-downtime">—</span><span class="kpi-unit">%</span></div>
+          <div class="kpi-progress"><div class="kpi-progress-bar" id="downtime-bar" style="width:0%"></div></div>
+          <div class="kpi-footer">
+            <span class="kpi-trend stable">→ At Risk</span>
+            <span class="kpi-target" id="kpi-downtime-target"></span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Fleet Availability</div>
+          <div><span class="kpi-value" id="kpi-availability">—</span><span class="kpi-unit">%</span></div>
+          <div class="kpi-progress"><div class="kpi-progress-bar" id="avail-bar" style="width:0%"></div></div>
+          <div class="kpi-footer">
+            <span class="kpi-trend up">↑ On Track</span>
+            <span class="kpi-target" id="kpi-avail-target"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fleet Grid -->
+      <div class="section-header">
+        <div>
+          <div class="section-title">Fleet Status</div>
+          <div class="section-sub">Click any aircraft to view detailed sensor data</div>
+        </div>
+        <div class="flex gap-8">
+          <span style="font-size:11px;color:var(--text-muted)">AOG: <strong id="stat-aog-ytd" style="color:var(--critical)">—</strong></span>
+          <span style="font-size:11px;color:var(--text-muted)">Revenue Protected: <strong id="stat-rev-protected" style="color:var(--low)">—</strong></span>
+          <span style="font-size:11px;color:var(--text-muted)">Prediction Accuracy: <strong id="stat-pred-acc" style="color:var(--accent)">—</strong></span>
+        </div>
+      </div>
+      <div class="fleet-grid" id="fleet-grid"></div>
+
+      <!-- Charts row -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📉 AOG Events — Monthly Trend</span>
+            <span class="badge badge-low">YTD: 14 events</span>
+          </div>
+          <div class="card-body" style="height:220px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-aog-trend"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📈 Fleet Availability Trend</span>
+            <span class="badge badge-moderate">Target: 97%</span>
+          </div>
+          <div class="card-body" style="height:220px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-availability"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subsystem breakdown -->
+      <div class="grid-2" style="margin-top:20px">
+        <div class="card">
+          <div class="card-header"><span class="card-title">🔧 Active Alerts by Subsystem</span></div>
+          <div class="card-body" style="height:260px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-subsystem"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">⚡ Top Priority Alerts</span></div>
+          <div id="top-alerts-list">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE: Aircraft Detail ────────────────────────────────────── -->
+    <div id="page-aircraft" class="page">
+      <div class="section-header mb-20">
+        <div>
+          <div class="flex items-center gap-12">
+            <span class="section-title" id="ac-reg">—</span>
+            <span id="ac-status" class="badge">—</span>
+          </div>
+          <div class="text-muted text-sm" id="ac-series"></div>
+        </div>
+        <select id="ac-selector" class="btn btn-ghost" style="font-size:12px;cursor:pointer;background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:8px 12px;border-radius:8px"></select>
+      </div>
+
+      <!-- Aircraft stats -->
+      <div class="kpi-grid" style="grid-template-columns:repeat(5,1fr);margin-bottom:20px">
+        <div class="kpi-card"><div class="kpi-label">Base</div><div class="kpi-value" style="font-size:22px" id="ac-base">—</div></div>
+        <div class="kpi-card"><div class="kpi-label">Flight Hours</div><div class="kpi-value" style="font-size:22px" id="ac-fh">—</div></div>
+        <div class="kpi-card"><div class="kpi-label">Cycles</div><div class="kpi-value" style="font-size:22px" id="ac-cyc">—</div></div>
+        <div class="kpi-card"><div class="kpi-label">Age</div><div class="kpi-value" style="font-size:22px" id="ac-age">—</div></div>
+        <div class="kpi-card"><div class="kpi-label">Phase</div><div class="kpi-value" style="font-size:16px;margin-top:4px" id="ac-phase">—</div></div>
+      </div>
+
+      <!-- Subsystem chips -->
+      <div class="subsystem-grid" id="subsystem-chips"></div>
+
+      <!-- Gauge + Predictions -->
+      <div class="grid-2" style="margin-bottom:20px">
+        <div class="card">
+          <div class="card-header"><span class="card-title">⚠️ Overall Risk Score</span></div>
+          <div class="gauge-wrap">
+            <canvas id="gauge-canvas" class="gauge-canvas" width="180" height="180"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">🤖 Active Predictions</span></div>
+          <div id="ac-pred-list"></div>
+        </div>
+      </div>
+
+      <!-- Sensor charts -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header"><span class="card-title">🌡 EGT — 24h Trend</span></div>
+          <div class="card-body" style="height:180px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-egt"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">📳 Vibration — 24h Trend</span></div>
+          <div class="card-body" style="height:180px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-vib"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">💧 Hydraulic Pressure</span></div>
+          <div class="card-body" style="height:180px">
+            <div class="chart-wrap" style="height:100%"><canvas id="chart-hyd"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE: Prediction Engine ──────────────────────────────────── -->
+    <div id="page-predictions" class="page">
+      <div class="section-header mb-20">
+        <div>
+          <div class="section-title">🤖 ML Prediction Engine</div>
+          <div class="section-sub">Isolation Forest (anomaly) + Random Forest (classification) · Model v2.4.1</div>
+        </div>
+        <div class="flex gap-8">
+          <div class="kpi-card" style="padding:12px 20px;min-width:80px;text-align:center">
+            <div class="kpi-label">Critical</div><div class="kpi-value" style="font-size:24px;color:var(--critical)" id="pred-critical">—</div>
+          </div>
+          <div class="kpi-card" style="padding:12px 20px;min-width:80px;text-align:center">
+            <div class="kpi-label">High</div><div class="kpi-value" style="font-size:24px;color:var(--high)" id="pred-high">—</div>
+          </div>
+          <div class="kpi-card" style="padding:12px 20px;min-width:80px;text-align:center">
+            <div class="kpi-label">Moderate</div><div class="kpi-value" style="font-size:24px;color:var(--moderate)" id="pred-moderate">—</div>
+          </div>
+          <div class="kpi-card" style="padding:12px 20px;min-width:80px;text-align:center">
+            <div class="kpi-label">Low</div><div class="kpi-value" style="font-size:24px;color:var(--low)" id="pred-low">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="section-title mb-16" style="margin-bottom:12px">Active Predictions</div>
+          <div id="pred-cards"></div>
+        </div>
+        <div>
+          <div class="card mb-16" style="margin-bottom:20px">
+            <div class="card-header"><span class="card-title">🎯 Risk vs. TTF Matrix</span></div>
+            <div class="card-body" style="height:300px">
+              <div class="chart-wrap" style="height:100%"><canvas id="chart-risk-matrix"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE: Maintenance Planner ───────────────────────────────── -->
+    <div id="page-maintenance" class="page">
+      <div class="section-header mb-20">
+        <div>
+          <div class="section-title">🔧 Maintenance Planner</div>
+          <div class="section-sub">AI-triggered and scheduled maintenance events</div>
+        </div>
+      </div>
+
+      <!-- Gantt -->
+      <div class="card mb-16" style="margin-bottom:20px">
+        <div class="card-header"><span class="card-title">📅 Maintenance Gantt — Next 18 Days</span></div>
+        <div class="card-body" style="height:280px">
+          <div class="chart-wrap" style="height:100%"><canvas id="chart-gantt"></canvas></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><span class="card-title">⏳ Upcoming Work Orders</span></div>
+          <div class="mx-timeline" id="mx-timeline" style="padding:20px 20px 20px 44px"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">✅ Recently Completed</span></div>
+          <div style="overflow-x:auto" id="mx-completed"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE: Data Explorer ──────────────────────────────────────── -->
+    <div id="page-data" class="page">
+      <div class="section-header mb-20">
+        <div>
+          <div class="section-title">🗄 Data Explorer</div>
+          <div class="section-sub">Schema overview, dataset downloads, and fleet metadata preview</div>
+        </div>
+      </div>
+
+      <div class="card mb-16" style="margin-bottom:20px">
+        <div class="card-header"><span class="card-title">📐 Database Schema — Table Summary</span></div>
+        <div style="overflow-x:auto" id="schema-overview"></div>
+      </div>
+
+      <!-- Download links -->
+      <div class="card mb-16" style="margin-bottom:20px">
+        <div class="card-header"><span class="card-title">⬇ Dataset Downloads</span></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+            <a href="data/aircraft_metadata.json" download class="btn btn-ghost">📄 aircraft_metadata.json</a>
+            <a href="data/sensor_summary.json"    download class="btn btn-ghost">📄 sensor_summary.json</a>
+            <a href="data/predictions.json"       download class="btn btn-ghost">📄 predictions.json</a>
+            <a href="data/kpis.json"              download class="btn btn-ghost">📄 kpis.json</a>
+            <a href="data/maintenance_alerts.json" download class="btn btn-ghost">📄 maintenance_alerts.json</a>
+            <a href="docs/schema_ddl.sql"         download class="btn btn-primary">🗃 schema_ddl.sql</a>
+          </div>
+          <div style="margin-top:16px;padding:14px;background:var(--bg-glass);border:1px solid var(--border);border-radius:var(--radius);font-size:12px;color:var(--text-secondary)">
+            <strong style="color:var(--accent)">📦 Full 2-Year Dataset</strong> — Run the generator locally:<br>
+            <code style="font-family:'JetBrains Mono',monospace;color:var(--text-primary)">
+              cd scripts<br>
+              pip install pandas numpy tqdm<br>
+              python generate_data.py --preview   # 30-day preview (~50MB)<br>
+              python generate_data.py             # Full 2-year (~1.5GB)
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">🛩 Fleet Metadata Preview</span></div>
+        <div style="overflow-x:auto" id="data-preview"></div>
+      </div>
+    </div>
+
+    <!-- ── PAGE: Domain Report ──────────────────────────────────────── -->
+    <div id="page-report" class="page">
+      <div class="section-header mb-20">
+        <div>
+          <div class="section-title">📋 Domain Specialist Report — Agent 1</div>
+          <div class="section-sub">Top 5 AOG-contributing subsystems · Failure modes · Sensor specifications</div>
+        </div>
+        <a href="docs/domain_specialist_report.md" download class="btn btn-ghost">⬇ Download Report</a>
+      </div>
+      <div class="card">
+        <div class="card-body" id="report-content" style="font-size:13px;line-height:1.7;color:var(--text-secondary);max-width:900px">
+          <div class="flex items-center gap-8"><div class="spinner"></div> Loading report…</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script src="js/charts.js"></script>
+<script src="js/fleet.js"></script>
+<script src="js/aircraft.js"></script>
+<script src="js/predictions.js"></script>
+<script src="js/maintenance.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

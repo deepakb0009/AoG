@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-04-24T00:00:00Z",
+  "period": "365d",
+  "kpis": {
+    "aog_reduction_pct":            { "value": 28.4, "target": 32.5, "prev": 0,    "trend": "UP",     "status": "ON_TRACK",  "unit": "%" },
+    "unscheduled_mx_reduction_pct": { "value": 22.1, "target": 25.0, "prev": 15.3, "trend": "UP",     "status": "ON_TRACK",  "unit": "%" },
+    "downtime_reduction_pct":       { "value": 18.7, "target": 20.0, "prev": 16.1, "trend": "UP",     "status": "AT_RISK",   "unit": "%" },
+    "fleet_availability_pct":       { "value": 94.3, "target": 97.0, "prev": 91.8, "trend": "UP",     "status": "ON_TRACK",  "unit": "%" }
+  },
+  "summary": {
+    "aog_events_ytd": 14,
+    "aog_events_prev_year": 19,
+    "avg_aog_duration_hrs": 6.8,
+    "revenue_protected_usd": 1240000,
+    "unscheduled_mx_ytd": 31,
+    "unscheduled_mx_prev": 40,
+    "fleet_size": 10,
+    "aircraft_operational": 7,
+    "aircraft_aog": 1,
+    "aircraft_maintenance": 2,
+    "predictions_issued_30d": 48,
+    "predictions_correct_pct": 87.5
+  },
+  "aog_trend_monthly": [
+    {"month":"Jan 2024","aog":3},{"month":"Feb 2024","aog":2},{"month":"Mar 2024","aog":1},
+    {"month":"Apr 2024","aog":2},{"month":"May 2024","aog":1},{"month":"Jun 2024","aog":2},
+    {"month":"Jul 2024","aog":1},{"month":"Aug 2024","aog":0},{"month":"Sep 2024","aog":1},
+    {"month":"Oct 2024","aog":0},{"month":"Nov 2024","aog":1},{"month":"Dec 2024","aog":0},
+    {"month":"Jan 2025","aog":1},{"month":"Feb 2025","aog":0},{"month":"Mar 2025","aog":1},
+    {"month":"Apr 2025","aog":0}
+  ],
+  "availability_trend_monthly": [
+    {"month":"Jan 2024","pct":91.2},{"month":"Feb 2024","pct":91.8},{"month":"Mar 2024","pct":92.4},
+    {"month":"Apr 2024","pct":92.1},{"month":"May 2024","pct":93.0},{"month":"Jun 2024","pct":92.8},
+    {"month":"Jul 2024","pct":93.5},{"month":"Aug 2024","pct":94.1},{"month":"Sep 2024","pct":93.9},
+    {"month":"Oct 2024","pct":94.5},{"month":"Nov 2024","pct":94.8},{"month":"Dec 2024","pct":94.2},
+    {"month":"Jan 2025","pct":94.6},{"month":"Feb 2025","pct":94.9},{"month":"Mar 2025","pct":94.3},
+    {"month":"Apr 2025","pct":94.3}
+  ]
+}

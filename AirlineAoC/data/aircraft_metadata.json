@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-04-24T00:00:00Z",
+  "fleet_size": 10,
+  "fleet_name": "SkyBridge Airlines",
+  "aircraft": [
+    {"aircraft_id":"AC001","registration":"N20001","series":"A320-214","engine":"CFM56-5B4","age_yrs":8.1,"total_fh":24850,"total_cycles":7412,"base":"KLAX","status":"OPERATIONAL","last_c_check":"2024-08-10","next_c_check":"2026-08-10"},
+    {"aircraft_id":"AC002","registration":"N20002","series":"A319-111","engine":"CFM56-5B5","age_yrs":12.8,"total_fh":41230,"total_cycles":13847,"base":"KJFK","status":"OPERATIONAL","last_c_check":"2023-11-02","next_c_check":"2025-11-02"},
+    {"aircraft_id":"AC003","registration":"N20003","series":"A321-231","engine":"V2533-A5","age_yrs":5.4,"total_fh":17640,"total_cycles":5123,"base":"KORD","status":"AOG","last_c_check":"2024-06-15","next_c_check":"2026-06-15"},
+    {"aircraft_id":"AC004","registration":"N20004","series":"A320-232","engine":"V2527-A5","age_yrs":6.9,"total_fh":21340,"total_cycles":6891,"base":"KLAX","status":"OPERATIONAL","last_c_check":"2024-02-20","next_c_check":"2026-02-20"},
+    {"aircraft_id":"AC005","registration":"N20005","series":"A319-132","engine":"CFM56-5B6","age_yrs":14.6,"total_fh":52180,"total_cycles":17234,"base":"KATL","status":"MAINTENANCE","last_c_check":"2023-05-12","next_c_check":"2025-05-12"},
+    {"aircraft_id":"AC006","registration":"N20006","series":"A320-214","engine":"CFM56-5B4","age_yrs":4.3,"total_fh":12480,"total_cycles":3921,"base":"KDFW","status":"OPERATIONAL","last_c_check":"2025-01-08","next_c_check":"2027-01-08"},
+    {"aircraft_id":"AC007","registration":"N20007","series":"A321-211","engine":"CFM56-5B3","age_yrs":9.8,"total_fh":28920,"total_cycles":8765,"base":"KMIA","status":"OPERATIONAL","last_c_check":"2024-04-30","next_c_check":"2026-04-30"},
+    {"aircraft_id":"AC008","registration":"N20008","series":"A320-214","engine":"CFM56-5B4","age_yrs":5.1,"total_fh":15330,"total_cycles":4932,"base":"KSFO","status":"OPERATIONAL","last_c_check":"2024-09-22","next_c_check":"2026-09-22"},
+    {"aircraft_id":"AC009","registration":"N20009","series":"A319-115","engine":"CFM56-5B7","age_yrs":13.4,"total_fh":47550,"total_cycles":15612,"base":"KDEN","status":"OPERATIONAL","last_c_check":"2023-08-05","next_c_check":"2025-08-05"},
+    {"aircraft_id":"AC010","registration":"N20010","series":"A321-231","engine":"V2533-A5","age_yrs":1.9,"total_fh":7820,"total_cycles":2341,"base":"KBOS","status":"OPERATIONAL","last_c_check":"2025-05-17","next_c_check":"2027-05-17"}
+  ]
+}

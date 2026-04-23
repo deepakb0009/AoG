@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-04-24T00:00:00Z",
+  "alerts": [
+    {
+      "id": "PRED-AC003-LG-001",
+      "aircraft_id": "AC003", "registration": "N20003", "series": "A321-231", "base": "KORD",
+      "subsystem": "LANDING_GEAR", "risk_score": 0.94, "risk_category": "CRITICAL",
+      "predicted_failure_mode": "Hydraulic actuator seal leak — NLG retraction circuit",
+      "recommended_action": "Aircraft grounded — hydraulic inspection required immediately",
+      "predicted_ttf_hours": 4.2, "ttf_ci_lower": 1.8, "ttf_ci_upper": 9.5,
+      "predicted_at": "2026-04-23T22:15:00Z", "acknowledged": false,
+      "top_features": [{"feature":"hyd_sys_psi_24h_min","importance":0.48},{"feature":"hyd_fluid_level_trend","importance":0.31}]
+    },
+    {
+      "id": "PRED-AC001-APU-002",
+      "aircraft_id": "AC001", "registration": "N20001", "series": "A320-214", "base": "KLAX",
+      "subsystem": "APU", "risk_score": 0.71, "risk_category": "HIGH",
+      "predicted_failure_mode": "EGT Exceedance — APU oil system degradation",
+      "recommended_action": "Schedule APU oil sample and borescope within 48 hours",
+      "predicted_ttf_hours": 62.4, "ttf_ci_lower": 38.0, "ttf_ci_upper": 89.2,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": false,
+      "top_features": [{"feature":"apu_egt_24h_trend","importance":0.42},{"feature":"apu_oil_psi_rolling_min","importance":0.31}]
+    },
+    {
+      "id": "PRED-AC005-ENG-004",
+      "aircraft_id": "AC005", "registration": "N20005", "series": "A319-132", "base": "KATL",
+      "subsystem": "ENGINE", "risk_score": 0.88, "risk_category": "CRITICAL",
+      "predicted_failure_mode": "Engine shop visit trigger — bearing deterioration + EGT exceedance",
+      "recommended_action": "Pull from service — shop visit required before next revenue flight",
+      "predicted_ttf_hours": 18.0, "ttf_ci_lower": 8.0, "ttf_ci_upper": 32.0,
+      "predicted_at": "2026-04-23T20:30:00Z", "acknowledged": true, "acknowledged_by": "tech_017",
+      "top_features": [{"feature":"eng1_vib_n1_ips_peak","importance":0.44},{"feature":"eng1_egt_margin_c","importance":0.38}]
+    },
+    {
+      "id": "PRED-AC009-ENG-003",
+      "aircraft_id": "AC009", "registration": "N20009", "series": "A319-115", "base": "KDEN",
+      "subsystem": "ENGINE", "risk_score": 0.67, "risk_category": "HIGH",
+      "predicted_failure_mode": "EGT margin erosion — HPT blade clearance degradation",
+      "recommended_action": "Borescope at next A-check. Trend monitoring q6h.",
+      "predicted_ttf_hours": 84.0, "ttf_ci_lower": 52.0, "ttf_ci_upper": 130.0,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": true, "acknowledged_by": "tech_042",
+      "top_features": [{"feature":"eng1_egt_margin_trend","importance":0.51},{"feature":"eng1_vib_n2_spectral","importance":0.27}]
+    },
+    {
+      "id": "PRED-AC008-BLEED-006",
+      "aircraft_id": "AC008", "registration": "N20008", "series": "A320-214", "base": "KSFO",
+      "subsystem": "BLEED", "risk_score": 0.62, "risk_category": "HIGH",
+      "predicted_failure_mode": "Precooler fouling — differential pressure rising trend",
+      "recommended_action": "Precooler borescope and cleaning at next transit stop.",
+      "predicted_ttf_hours": 96.0, "ttf_ci_lower": 60.0, "ttf_ci_upper": 140.0,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": false,
+      "top_features": [{"feature":"precooler_dp_7d_trend","importance":0.52},{"feature":"bleed_duct_psi_min","importance":0.29}]
+    },
+    {
+      "id": "PRED-AC007-APU-005",
+      "aircraft_id": "AC007", "registration": "N20007", "series": "A321-211", "base": "KMIA",
+      "subsystem": "APU", "risk_score": 0.55, "risk_category": "MODERATE",
+      "predicted_failure_mode": "APU starter-generator wear — elevated vibration",
+      "recommended_action": "Monitor APU vibration trend. Schedule inspection within 7 days.",
+      "predicted_ttf_hours": 120.0, "ttf_ci_lower": 85.0, "ttf_ci_upper": 170.0,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": false,
+      "top_features": [{"feature":"apu_vibration_g_7d_trend","importance":0.39},{"feature":"apu_rpm_pct_variance","importance":0.28}]
+    },
+    {
+      "id": "PRED-AC004-AV-007",
+      "aircraft_id": "AC004", "registration": "N20004", "series": "A320-232", "base": "KLAX",
+      "subsystem": "AVIONICS", "risk_score": 0.38, "risk_category": "MODERATE",
+      "predicted_failure_mode": "ADIRU anomaly — ARINC bus error rate accumulation",
+      "recommended_action": "BITE download at next transit check.",
+      "predicted_ttf_hours": 200.0, "ttf_ci_lower": 140.0, "ttf_ci_upper": 280.0,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": false,
+      "top_features": [{"feature":"arinc_errors_7d_sum","importance":0.46},{"feature":"bite_fault_count_trend","importance":0.33}]
+    },
+    {
+      "id": "PRED-AC002-BLEED-008",
+      "aircraft_id": "AC002", "registration": "N20002", "series": "A319-111", "base": "KJFK",
+      "subsystem": "BLEED", "risk_score": 0.28, "risk_category": "LOW",
+      "predicted_failure_mode": "PRSOV valve response time slightly elevated",
+      "recommended_action": "No immediate action. Continue trend monitoring.",
+      "predicted_ttf_hours": 400.0, "ttf_ci_lower": 250.0, "ttf_ci_upper": 600.0,
+      "predicted_at": "2026-04-24T00:00:00Z", "acknowledged": false,
+      "top_features": [{"feature":"prsov_pos_response_ms","importance":0.41},{"feature":"bleed_duct_psi_variance","importance":0.35}]
+    }
+  ]
+}
